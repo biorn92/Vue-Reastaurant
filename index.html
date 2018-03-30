@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="node_modules/jquery/jquery.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <title>Restaurant</title>
+  </head>
+  <body>
+
+    <div id="app">
+      <center><h1><i>S&S Restaurant</i></h1>
+      <div class="row">
+        <div class="menu col-3 offset-1">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="menu.jpg" alt="Card image cap">
+            <div class="card-body">
+
+              <center><button type="button" name="button" class="btmenu" @click='loadMenu'>MENU</button></center>
+              <ul>
+                <li v-for='menu in menu'><b>Dish:</b> {{menu.product}} <br> <b>Price:</b> {{menu.price}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="customers col-3 offset-1">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="customers.jpg" alt="Card image cap">
+            <div class="card-body">
+
+              <center><button type="button" name="button" class="btmenu" @click='loadOrders'>Customers</button></center>
+              <ul>
+                <li v-for='order in orders'><b>Table:</b> {{order.id}} <br> <b>Customer:</b> {{order.user}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="table col-3 offset-1">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="table.jpg" alt="Card image cap">
+            <div class="card-body">
+              <input placeholder="Table" type="text" v-model='orders.id'>
+              <button type="button" name="button" class="btmenu" @click='loadOrdersByUser(orders.id)'>Order</button>
+              <ul>
+                <li v-for='order in order'><b>Dish:</b> {{order.products}} <br> <b>Status:</b> {{order.status}}<br> <b>Price:</b> {{order.price}}<br> <b>Customer:</b> {{order.user}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="status offset-1">
+          <div class="card" style="width: 70rem;">
+            <div class="card-header" @click='loadOrders'>
+              Status Orders
+            </div>
+            <ol class="list-group list-group-flush" >
+              <li class="col-lg-8" v-for='order in orders'><b>Dish:</b> {{order.products}}   <b>Price:</b> {{order.price}}  <b>Customer:</b> {{order.user}}
+              <span class="badge badge-primary col-lg-1" v-if='order.status=="ready"'>{{order.status}}</span>
+              <span class="badge badge-dark col-lg-1" v-else-if='order.status=="closed"'>{{order.status}}</span>
+              <span class="badge badge-secondary col-lg-1" v-else='order.status=="new"'>{{order.status}}</span>
+              <button class="btdelete"type="button" name="button" @click='deleteOrder(order.id)'>Delete</button>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+        <div class="row status">
+          <div class="insertStatus col-md-10 offset-1">
+            <div class="card text-center">
+              <div class="card-header">
+                Orders
+              </div>
+              <div class="card-body">
+                <input type="number" v-model='orders.id' placeholder="Insert table..">
+                <input type="text" v-model='newStatus' placeholder="Insert new status..">
+                <button type="button" @click='changeStatus(orders.id)'>Change</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row addorder">
+          <div class="card text-center col-md-10 offset-1">
+            <div class="card-header">
+              Add Order
+            </div>
+            <div class="card-body">
+              <input type="text" v-model='newOrder.products' placeholder="Insert product..">
+              <input type="number" v-model.number='newOrder.price' placeholder="Insert new price..">
+              <input type="text" v-model='newOrder.user' placeholder="Insert new user..">
+              <button type="button" @click='addOrder(tokenu+=1)'>Add order</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="cassa.jpg" alt="Cassa">
+          <div class="card-body">
+            <button type="button" name="button" @click='getProfit'>Total</button>
+            <p class="profit" v-for='profit in profit'> Profit $ : {{profit}}</p>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+.btmenu{
+  background-color: green;
+  border-radius: 15%;
+}
+
+li{
+  margin-top: 40px;
+  text-align: left;
+  font-size: large;
+}
+
+.menu{
+  margin-top: 50px;
+}
+
+.customers{
+  margin-top: 50px;
+}
+
+.customers img{
+  width: 74%;
+}
+
+.table{
+  margin-top: 50px;
+}
+
+.status{
+  margin-top: 50px;
+}
+
+.btdelete{
+  float: right;
+}
+
+.status{
+  margin-top:
+}
+
+.profit{
+  margin-top: 20px;
+  font-size: 20px;
+}

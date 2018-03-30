@@ -1,0 +1,16 @@
+{
+  "name": "vue-restaurant",
+  "version": "1.0.0",
+  "description": "A simple client of a Restaurant",
+  "main": "app.js",
+  "dependencies": {
+    "jquery": "^1.9.1",
+    "bootstrap": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simone Spartà",
+  "license": "MIT"
+}
